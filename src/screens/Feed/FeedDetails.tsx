@@ -47,6 +47,7 @@ const listData = [
 ];
 const FeedDetails = () => {
   const { params } = useRoute();
+  const [listData, setListData] = React.useState(params.episodes);
 
   const closeRow = (rowMap: any, rowKey: any) => {
     if (rowMap[rowKey]) {
@@ -56,10 +57,33 @@ const FeedDetails = () => {
 
   const deleteRow = (rowMap: any, rowKey: any) => {
     closeRow(rowMap, rowKey);
-    // const newData = [...listData];
-    // const prevIndex = listData.findIndex(item => item.key === rowKey);
-    // newData.splice(prevIndex, 1);
-    // setListData(newData);
+    const newData = [...listData];
+    const prevIndex = listData.findIndex((item) => item.key === rowKey);
+    newData.splice(prevIndex, 1);
+    setListData(newData);
+  };
+
+  const addRow = (rowMap: any, rowKey: any) => {
+    const row = rowMap[rowKey];
+    const title = row.props.item.title;
+    // find the number in the title "Episode 1: Teamwork", then return a new title with the number incramented by 1
+    const newTitle = title.replace(/(\d+)/, (match: any) => {
+      return parseInt(match) + 1;
+    });
+
+    const topic = title.split(":")[1].trim();
+
+    closeRow(rowMap, rowKey);
+    const newData = [
+      ...listData,
+      {
+        title: newTitle,
+        description: "The next episode in our series about " + topic,
+        url: "https://via.placeholder.com/150",
+      },
+    ];
+
+    setListData(newData);
   };
 
   //   const renderItem = (data: any) => (
@@ -93,7 +117,7 @@ const FeedDetails = () => {
       style={{ height: 120 }}
     >
       <TouchableOpacity
-        onPress={() => closeRow(rowMap, data.item.key)}
+        onPress={() => addRow(rowMap, data.item.key)}
         className="justify-center items-center w-24 h-full px-4 bg-blue-500"
       >
         <Icon
@@ -107,7 +131,7 @@ const FeedDetails = () => {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => closeRow(rowMap, data.item.key)}
+        onPress={() => deleteRow(rowMap, data.item.key)}
         className="justify-center items-center w-24 h-full px-4 bg-red-500"
       >
         <Icon

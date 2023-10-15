@@ -13,7 +13,7 @@ interface ICardItemProps {
 }
 
 const CardItem: React.FC<ICardItemProps> = ({ data, onPress }) => {
-  const { name, thumbnailUrl, language, level } = data;
+  const { feedName, thumbnailUrl, language, level, episodes } = data;
 
   return (
     <TouchableOpacity
@@ -21,7 +21,7 @@ const CardItem: React.FC<ICardItemProps> = ({ data, onPress }) => {
       onPress={() =>
         NavigationService.navigate(SCREENS.FEED_STACK, {
           screen: SCREENS.FEED_DETAILS,
-          params: { feedName: name, thumbnailUrl: thumbnailUrl },
+          params: { feedName, thumbnailUrl, episodes },
         })
       }
     >
@@ -30,7 +30,7 @@ const CardItem: React.FC<ICardItemProps> = ({ data, onPress }) => {
         className="w-16 h-16 bg-neutral-200 rounded-md border border-neutral-400"
       />
       <View>
-        <Text className="text-lg font-medium text-black">{name}</Text>
+        <Text className="text-lg font-medium text-black">{feedName}</Text>
         <Text className="text-md text-black">
           {language} | {level}
         </Text>

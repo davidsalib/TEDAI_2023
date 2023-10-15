@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { SCREENS } from "@shared-constants";
 import NewFeedHeader from "./NewFeedHeader";
 import CheckboxRow from "@shared-components/CheckboxRow";
+import MockData from "@screens/home/mock/MockData";
 const subtopics = [
   // generate subtopics on the topic of leadership
   "Team Management",
@@ -64,7 +65,7 @@ const NewFeedSubtopic: React.FC = () => {
           onPress={() =>
             NavigationService.navigate(SCREENS.FEED_STACK, {
               screen: SCREENS.FEED_DETAILS,
-              params: { feedName: "Leadership" },
+              params: MockData[0],
             })
           }
         >

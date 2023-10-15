@@ -26,19 +26,18 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   /* -------------------------------------------------------------------------- */
 
   const List = () => (
-    <View className="pt-8">
-      <FlatList
-        data={MockData}
-        renderItem={({ item }) => (
-          <CardItem data={item} onPress={handleItemPress} />
-        )}
-      />
-    </View>
+    <FlatList
+      className="flex-1"
+      data={MockData}
+      renderItem={({ item }) => (
+        <CardItem data={item} onPress={handleItemPress} />
+      )}
+    />
   );
 
   const Welcome = () => {
     return (
-      <View className="px-4 flex flex-row justify-between">
+      <View className="px-4 pt-8 pb-8 flex flex-row justify-between">
         <Text className="text-4xl font-bold text-black">Feeds</Text>
         <TouchableOpacity
           onPress={() => {
@@ -46,22 +45,16 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             console.log("ok");
           }}
         >
-          <Icon name="plus" type={IconType.AntDesign} />
+          <Icon name="plus" type={IconType.AntDesign} size={24} />
         </TouchableOpacity>
       </View>
     );
   };
 
-  const Content = () => (
-    <View className="py-8">
+  return (
+    <SafeAreaView className="h-full">
       <Welcome />
       <List />
-    </View>
-  );
-
-  return (
-    <SafeAreaView>
-      <Content />
     </SafeAreaView>
   );
 };
