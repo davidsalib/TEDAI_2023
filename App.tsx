@@ -1,3 +1,5 @@
+/// <reference types="nativewind/types" />
+
 import "react-native-gesture-handler";
 import React from "react";
 import { StatusBar, useColorScheme, LogBox } from "react-native";
@@ -12,7 +14,7 @@ LogBox.ignoreAllLogs();
 
 const App = () => {
   const scheme = useColorScheme();
-  const isDarkMode = scheme === "dark";
+  const isDarkMode = false; //scheme === "dark";
 
   React.useEffect(() => {
     StatusBar.setBarStyle(isDarkMode ? "light-content" : "dark-content");
