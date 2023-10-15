@@ -1,5 +1,5 @@
 import { useRoute } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
@@ -7,44 +7,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import SoundPlayer from "react-native-sound-player";
 import { SwipeListView } from "react-native-swipe-list-view";
 
-const listData = [
-  {
-    title: "Episode X [subtopic]",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. ",
-    url: "https://www2.cs.uic.edu/~i101/SoundFiles/gettysburg10.wav",
-  },
-  {
-    title: "Episode X [subtopic]",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. ",
-    url: "https://via.placeholder.com/150",
-  },
-  {
-    title: "Episode X [subtopic]",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. ",
-    url: "https://via.placeholder.com/150",
-  },
-  {
-    title: "Episode X [subtopic]",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. ",
-    url: "https://via.placeholder.com/150",
-  },
-  {
-    title: "Episode X [subtopic]",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. ",
-    url: "https://via.placeholder.com/150",
-  },
-  {
-    title: "Episode X [subtopic]",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. ",
-    url: "https://via.placeholder.com/150",
-  },
-];
 const FeedDetails = () => {
   const { params } = useRoute();
   const [listData, setListData] = React.useState(params.episodes);
