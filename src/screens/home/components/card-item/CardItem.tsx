@@ -1,6 +1,6 @@
 import { SCREENS } from "@shared-constants";
 import React from "react";
-import { StyleProp, Text, View, ViewStyle } from "react-native";
+import { Image, StyleProp, Text, View, ViewStyle } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as NavigationService from "react-navigation-helpers";
 
@@ -13,7 +13,7 @@ interface ICardItemProps {
 }
 
 const CardItem: React.FC<ICardItemProps> = ({ data, onPress }) => {
-  const { name } = data;
+  const { name, thumbnailUrl, language, level } = data;
 
   return (
     <TouchableOpacity
@@ -21,12 +21,20 @@ const CardItem: React.FC<ICardItemProps> = ({ data, onPress }) => {
       onPress={() =>
         NavigationService.navigate(SCREENS.FEED_STACK, {
           screen: SCREENS.FEED_DETAILS,
-          params: { feedName: name },
+          params: { feedName: name, thumbnailUrl: thumbnailUrl },
         })
       }
     >
-      <View className="w-12 h-12 bg-neutral-200 rounded-md" />
-      <Text className="text-lg font-medium text-black">{name}</Text>
+      <Image
+        source={{ uri: thumbnailUrl }}
+        className="w-16 h-16 bg-neutral-200 rounded-md border border-neutral-400"
+      />
+      <View>
+        <Text className="text-lg font-medium text-black">{name}</Text>
+        <Text className="text-md text-black">
+          {language} | {level}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 };

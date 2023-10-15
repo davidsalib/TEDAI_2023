@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -126,8 +126,13 @@ const FeedDetails = () => {
   return (
     <SafeAreaView className="bg-white h-full">
       <View className="border-b flex-row items-center border-neutral-200 px-6 py-6">
-        <View className="w-32 h-32 bg-neutral-200 mr-6 rounded-lg" />
-        <Text className="text-3xl font-semibold text-black">
+        <View className="border grow-0 border-neutral-200 rounded-lg mr-6">
+          <Image
+            source={{ uri: params.thumbnailUrl }}
+            className="w-24 h-24 bg-neutral-200 rounded-lg"
+          />
+        </View>
+        <Text className="flex-1 text-3xl font-semibold text-black">
           {params.feedName}
         </Text>
       </View>
