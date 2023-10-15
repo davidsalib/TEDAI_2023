@@ -15,7 +15,7 @@ const NewFeedTopic: React.FC = () => {
         onBack={() =>
           NavigationService.reset({
             index: 0,
-            routes: [{ name: SCREENS.HOME }],
+            routes: [{ name: SCREENS.FEED_STACK }],
           })
         }
       />

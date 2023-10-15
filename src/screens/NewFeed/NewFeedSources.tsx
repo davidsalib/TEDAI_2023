@@ -92,7 +92,7 @@ const NewFeedSources: React.FC = () => {
         </ScrollView>
         <TouchableOpacity
           className="bg-black rounded-md py-4 flex-row justify-center items-center"
-          onPress={() => NavigationService.navigate(SCREENS.NEWFEED_VOICE)}
+          onPress={() => NavigationService.navigate(SCREENS.NEWFEED_LANGUAGE)}
         >
           <Text className="text-white text-lg font-semibold">Next</Text>
         </TouchableOpacity>

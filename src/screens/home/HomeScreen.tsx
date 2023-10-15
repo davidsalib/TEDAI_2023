@@ -1,24 +1,18 @@
-import React, { useMemo } from "react";
-import { View, FlatList, Image, Text, Touchable } from "react-native";
-import { useTheme } from "@react-navigation/native";
+import React from "react";
+import { View, FlatList, Text } from "react-native";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationService from "react-navigation-helpers";
-import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
  * ? Local Imports
  */
-import createStyles from "./HomeScreen.style";
 import MockData from "./mock/MockData";
 import CardItem from "./components/card-item/CardItem";
 /**
  * ? Shared Imports
  */
 import { SCREENS } from "@shared-constants";
-import fonts from "@fonts";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { StackActions } from "@react-navigation/native";
-import { useNavigation } from "@react-navigation/native";
 
 interface HomeScreenProps {}
 
@@ -32,7 +26,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   /* -------------------------------------------------------------------------- */
 
   const List = () => (
-    <View>
+    <View className="pt-8">
       <FlatList
         data={MockData}
         renderItem={({ item }) => (
@@ -48,7 +42,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         <Text className="text-4xl font-bold text-black">Feeds</Text>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.push(SCREENS.NEWFEED_TOPIC);
+            NavigationService.push(SCREENS.NEWFEED_STACK);
             console.log("ok");
           }}
         >

@@ -59,7 +59,15 @@ const NewFeedSubtopic: React.FC = () => {
             />
           ))}
         </ScrollView>
-        <TouchableOpacity className="bg-black rounded-md py-4 flex-row justify-center items-center">
+        <TouchableOpacity
+          className="bg-black rounded-md py-4 flex-row justify-center items-center"
+          onPress={() =>
+            NavigationService.navigate(SCREENS.FEED_STACK, {
+              screen: SCREENS.FEED_DETAILS,
+              params: { feedName: "Leadership" },
+            })
+          }
+        >
           <Text className="text-white text-lg font-semibold">Next</Text>
         </TouchableOpacity>
       </View>

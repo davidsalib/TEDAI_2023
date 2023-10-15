@@ -12,6 +12,8 @@ import NewFeedLevel from "@screens/NewFeed/NewFeedLevel";
 import NewFeedVoice from "@screens/NewFeed/NewFeedVoice";
 import NewFeedSubtopic from "@screens/NewFeed/NewFeedSubtopics";
 import NewFeedSources from "@screens/NewFeed/NewFeedSources";
+import FeedDetails from "@screens/Feed/FeedDetails";
+import NewFeedLanguage from "@screens/NewFeed/NewFeedLanguage";
 
 const Stack = createStackNavigator();
 
@@ -25,11 +27,22 @@ const Navigation = () => {
       <Stack.Screen name={SCREENS.NEWFEED_TOPIC} component={NewFeedTopic} />
       <Stack.Screen name={SCREENS.NEWFEED_LEVEL} component={NewFeedLevel} />
       <Stack.Screen name={SCREENS.NEWFEED_VOICE} component={NewFeedVoice} />
+      <Stack.Screen
+        name={SCREENS.NEWFEED_LANGUAGE}
+        component={NewFeedLanguage}
+      />
       <Stack.Screen name={SCREENS.NEWFEED_SOURCES} component={NewFeedSources} />
       <Stack.Screen
         name={SCREENS.NEWFEED_SUBTOPIC}
         component={NewFeedSubtopic}
       />
+    </Stack.Navigator>
+  );
+
+  const FeedStack = () => (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name={SCREENS.HOME} component={HomeScreen} />
+      <Stack.Screen name={SCREENS.FEED_DETAILS} component={FeedDetails} />
     </Stack.Navigator>
   );
 
@@ -41,8 +54,8 @@ const Navigation = () => {
       }}
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={SCREENS.HOME} component={HomeScreen} />
-        <Stack.Screen name={SCREENS.NEWFEED_TOPIC} component={NewFeedStack} />
+        <Stack.Screen name={SCREENS.FEED_STACK} component={FeedStack} />
+        <Stack.Screen name={SCREENS.NEWFEED_STACK} component={NewFeedStack} />
       </Stack.Navigator>
     </NavigationContainer>
   );
